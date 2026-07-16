@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches --color-primary in src/styles/tokens.css, so the launcher
+         icon and splash screen feel like one brand rather than a
+         Capacitor-default green/white template. -->
+    <color name="brand_primary">#2f9e6e</color>
+    <color name="brand_on_primary">#ffffff</color>
+    <color name="ic_launcher_background">#2f9e6e</color>
+</resources>
