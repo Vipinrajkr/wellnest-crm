@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Telegram Bot API calls (platform/telegramClient.js) and general
+         connectivity checks. Their absence must never crash the app — see
+         PROJECT_SPEC.md §8.1 Offline-first. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Required on Android 13+ (API 33) for both Local Notifications
+         (Reminders, §6.5) and Background Runner's CapacitorNotifications
+         (backup-due nudge, §12.4). Without this, scheduled notifications
+         silently never show on Android 13+. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Reminders (followups/payments/program+supplement ending) are
+         scheduled for a specific time (9 AM local, see
+         domain/reminders/reminderService.js) — this keeps that timing
+         exact on Android 12+ instead of being batched/delayed by the OS. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- Lets Capacitor's Local Notifications plugin re-register pending
+         notifications after a device reboot, so reminders aren't silently
+         lost until the app is next opened. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

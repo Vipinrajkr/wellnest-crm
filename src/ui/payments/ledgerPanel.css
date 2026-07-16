@@ -1,0 +1,113 @@
+/* ui/payments/ledgerPanel.css
+   Styles for a program's payment ledger: the fee/discount/paid/pending
+   summary, the record-payment form, and the payment history rows.
+   Shares .client-form__* and .button base rules with the clients feature. */
+
+.ledger-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+}
+
+.ledger-summary__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 2px 0;
+  color: var(--color-text-muted);
+}
+
+.ledger-summary__row--total {
+  font-weight: 600;
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-1);
+  padding-top: var(--space-2);
+}
+
+.ledger-summary__row--paid span:last-child {
+  color: var(--color-status-active);
+  font-weight: 600;
+}
+
+.ledger-summary__row--pending span:last-child {
+  color: var(--color-status-expired);
+  font-weight: 600;
+}
+
+.ledger-panel__toolbar {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.ledger-panel__loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.ledger-panel__history-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 var(--space-2);
+}
+
+.payment-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.payment-history__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.payment-history__row:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.payment-history__amount {
+  font-weight: 600;
+  flex: 0 0 auto;
+}
+
+.payment-history__meta {
+  color: var(--color-text-muted);
+  flex: 1 1 auto;
+}
+
+.payment-history__reference {
+  color: var(--color-text-muted);
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

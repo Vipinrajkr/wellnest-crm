@@ -1,0 +1,309 @@
+/* ui/clients/clientListScreen.css
+   Styles for the client list (search, filter chips, rows) and the
+   shared Add/Edit client form rendered by clientForm.js. */
+
+.client-list__toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.client-list__search {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-size: 14px;
+  transition: border-color var(--motion-fast) var(--motion-easing-standard);
+}
+
+.client-list__search:focus {
+  border-color: var(--color-primary);
+}
+
+.client-list__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--motion-easing-standard),
+    color var(--motion-fast) var(--motion-easing-standard),
+    border-color var(--motion-fast) var(--motion-easing-standard);
+}
+
+.chip--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.client-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.client-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.client-row:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.client-row__info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.client-row__name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.client-row__meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-badge {
+  flex: 0 0 auto;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  /* Intentionally a plain white, not var(--color-on-primary): that token
+     is paired specifically with --color-primary (which lightens in dark
+     mode, so its "on" color flips to near-black to match). The
+     --color-status-* backgrounds below are NOT overridden per theme, so
+     white stays the correct high-contrast choice in both themes — using
+     --color-on-primary here would swap in near-black text against these
+     saturated status colors in dark mode and hurt legibility. */
+  color: #fff;
+  white-space: nowrap;
+}
+
+.status-badge--lead {
+  background: var(--color-status-lead);
+}
+
+.status-badge--active {
+  background: var(--color-status-active);
+}
+
+.status-badge--completed {
+  background: var(--color-status-completed);
+}
+
+.status-badge--dropped {
+  background: var(--color-status-dropped);
+}
+
+.status-badge--renewed {
+  background: var(--color-status-renewed);
+}
+
+.status-badge--expired {
+  background: var(--color-status-expired);
+}
+
+.status-badge--discontinued {
+  background: var(--color-status-dropped);
+}
+
+.client-row__actions {
+  display: flex;
+  gap: var(--space-1);
+  flex: 0 0 auto;
+}
+
+.icon-button {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color var(--motion-fast) var(--motion-easing-standard);
+}
+
+.icon-button:hover {
+  background: var(--color-bg);
+}
+
+.icon-button--danger {
+  color: var(--color-danger);
+  border-color: var(--color-danger-bg);
+}
+
+.icon-button--danger:hover {
+  background: var(--color-danger-bg);
+}
+
+/* Client form (Add / Edit) */
+
+.client-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.client-form__error {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+.client-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.client-form__field input,
+.client-form__field select,
+.client-form__field textarea {
+  font-size: 14px;
+  color: var(--color-text);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color var(--motion-fast) var(--motion-easing-standard);
+}
+
+.client-form__field input:focus,
+.client-form__field select:focus,
+.client-form__field textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.client-form__field-error {
+  color: var(--color-danger);
+  font-size: 12px;
+  min-height: 14px;
+}
+
+.client-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.button {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--motion-easing-standard),
+    box-shadow var(--motion-fast) var(--motion-easing-standard),
+    transform var(--motion-fast) var(--motion-easing-standard),
+    opacity var(--motion-fast) var(--motion-easing-standard);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button--primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--elevation-1);
+}
+
+.button--primary:hover:not(:disabled) {
+  box-shadow: var(--elevation-2);
+}
+
+.button--ghost {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.button--ghost:hover:not(:disabled) {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Client detail screen */
+
+.client-detail__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.client-detail__heading {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.client-detail__heading h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.client-detail__contact {
+  display: flex;
+  gap: var(--space-4);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.client-detail__contact-empty {
+  font-style: italic;
+}
+
+.client-detail__section h2 {
+  font-size: 15px;
+  margin-bottom: var(--space-3);
+}

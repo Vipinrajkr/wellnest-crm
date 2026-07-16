@@ -1,0 +1,85 @@
+/* ui/reports/reportsScreen.css
+   Toolbar, chart canvas, and table styles for the Reports screen. Reuses
+   .dashboard-stats/.dashboard-stat-card from ui/dashboard/dashboardScreen.css
+   and .button/.status-badge from ui/clients/clientListScreen.css rather
+   than redefining them. */
+
+.reports-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.reports-section {
+  margin-top: var(--space-5);
+}
+
+.reports-section h2 {
+  font-size: 15px;
+  margin-bottom: var(--space-3);
+}
+
+.reports-chart-figure {
+  margin: 0;
+}
+
+.reports-chart {
+  width: 100%;
+  height: 180px;
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.reports-chart:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.reports-table-wrapper {
+  overflow-x: auto;
+  margin-top: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.reports-table-wrapper:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.reports-table th,
+.reports-table td {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reports-table th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  background: var(--color-bg);
+}
+
+.reports-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.reports-table tbody tr {
+  transition: background-color var(--motion-fast) var(--motion-easing-standard);
+}
+
+.reports-table tbody tr:hover {
+  background: var(--color-bg);
+}

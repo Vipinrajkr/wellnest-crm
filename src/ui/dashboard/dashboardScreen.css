@@ -1,0 +1,92 @@
+/* ui/dashboard/dashboardScreen.css
+   Stat cards and follow-up/programs-ending lists for the home screen.
+   Shares .screen-placeholder from styles/base.css. */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.dashboard-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.dashboard-stat-card:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.dashboard-stat-card__value {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.dashboard-stat-card__label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.dashboard-stat-card__sublabel {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.dashboard-section {
+  margin-top: var(--space-5);
+}
+
+.dashboard-section h2 {
+  font-size: 15px;
+  margin-bottom: var(--space-3);
+}
+
+.dashboard-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dashboard-list__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--motion-easing-standard),
+    box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.dashboard-list__row:hover {
+  background: var(--color-bg);
+  box-shadow: var(--elevation-1);
+}
+
+.dashboard-list__title {
+  font-weight: 600;
+}
+
+.dashboard-list__meta {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}

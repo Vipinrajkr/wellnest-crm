@@ -1,0 +1,52 @@
+/* ui/reminders/remindersPanel.css
+   Layout for the unified reminders list mounted on the Dashboard. Reuses
+   .dashboard-list/.dashboard-list__row/.button/.screen-placeholder from
+   ui/dashboard/dashboardScreen.css and ui/clients/clientListScreen.css
+   rather than redefining them. */
+
+.reminders-panel__notice {
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-3);
+  background: var(--color-bg);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.reminder-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.reminder-row:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.reminder-row__main {
+  flex: 1 1 auto;
+  /* The card look now lives on .reminder-row itself — the inner button
+     stays borderless/transparent so the two don't stack into a
+     double-bordered box. */
+  background: transparent;
+  border: none;
+  padding: var(--space-1) 0;
+}
+
+.reminder-row__main:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.reminder-row__actions {
+  display: flex;
+  gap: var(--space-1);
+  flex: 0 0 auto;
+}

@@ -1,0 +1,162 @@
+/* ui/programs/programsPanel.css
+   Styles for the client detail "Programs" panel: the add-program form,
+   active program cards (with the auto-progress bar), and the history list.
+   Shares .client-form__* and .status-badge base rules with the clients
+   feature rather than redefining them. */
+
+.programs-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.programs-panel__toolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.program-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.program-form__dates,
+.program-form__fees {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.program-form__dates .client-form__field,
+.program-form__fees .client-form__field {
+  flex: 1 1 0;
+}
+
+.program-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.program-card {
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.program-card:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.program-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.program-card__name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.program-card__dates {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.program-card__goal {
+  font-size: 13px;
+}
+
+.program-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.program-progress__bar {
+  height: 100%;
+  background: var(--color-primary);
+}
+
+.program-progress__label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.program-card__fees {
+  display: flex;
+  gap: var(--space-3);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.program-card__fees-pending {
+  color: var(--color-status-expired);
+  font-weight: 600;
+}
+
+.program-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.programs-panel__history-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: var(--space-2);
+}
+
+.program-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.program-history__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.program-history__row:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.program-history__name {
+  font-weight: 600;
+  flex: 1 1 auto;
+}
+
+.program-history__dates {
+  color: var(--color-text-muted);
+}
+
+.program-history__pending {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}

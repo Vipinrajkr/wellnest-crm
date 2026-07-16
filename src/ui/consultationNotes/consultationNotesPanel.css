@@ -1,0 +1,105 @@
+/* ui/consultationNotes/consultationNotesPanel.css
+   Styles for the client detail "Consultation Notes" panel: the add/edit
+   note form and the chronological note cards (vitals + clinical notes).
+   Shares .client-form__*/.button base rules with the clients feature. */
+
+.consultation-notes-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.consultation-notes-panel__toolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.note-form__row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.note-form__row .client-form__field {
+  flex: 1 1 0;
+}
+
+.note-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.note-card {
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  box-shadow: var(--elevation-1);
+  transition: box-shadow var(--motion-fast) var(--motion-easing-standard);
+}
+
+.note-card:hover {
+  box-shadow: var(--elevation-2);
+}
+
+.note-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note-card__date {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.note-card__actions {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.note-card__vitals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.note-vital {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.note-vital__label {
+  color: var(--color-text-muted);
+}
+
+.note-vital__value {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.note-card__section {
+  font-size: 13px;
+}
+
+.note-card__followup {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,104 @@
+/* styles/tokens.css
+   Design tokens: colors, spacing, radii, and shell dimensions.
+   Kept separate from base.css so themes/values can change without
+   touching structural rules. */
+
+:root {
+  /* Colors */
+  --color-bg: #f5f7f8;
+  --color-surface: #ffffff;
+  --color-primary: #2f9e6e;
+  --color-on-primary: #ffffff;
+  --color-text: #1b1f22;
+  --color-text-muted: #6b7280;
+  --color-border: #e3e6e8;
+  --color-danger: #dc2626;
+  --color-danger-bg: #fee2e2;
+
+  /* Client status colors (Lead / Active / Completed / Dropped) */
+  --color-status-lead: #6b7280;
+  --color-status-active: #2f9e6e;
+  --color-status-completed: #6366f1;
+  --color-status-dropped: #dc2626;
+
+  /* Additional program status colors (Renewed / Expired) */
+  --color-status-renewed: #0891b2;
+  --color-status-expired: #d97706;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shell dimensions */
+  --nav-height: 64px;
+  --nav-rail-width: 96px;
+  --fab-size: 56px;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* Elevation — Material-style layered shadows. Cards/rows rest at
+     elevation-1; hover/press and the FAB use higher levels. Overridden
+     per-theme below since flat black shadows barely read on a dark
+     background (see [data-theme="dark"]). */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px rgba(16, 24, 32, 0.06), 0 1px 3px rgba(16, 24, 32, 0.08);
+  --elevation-2: 0 2px 4px rgba(16, 24, 32, 0.08), 0 4px 10px rgba(16, 24, 32, 0.10);
+  --elevation-3: 0 4px 8px rgba(16, 24, 32, 0.10), 0 8px 20px rgba(16, 24, 32, 0.14);
+  --elevation-4: 0 6px 14px rgba(16, 24, 32, 0.14), 0 14px 28px rgba(16, 24, 32, 0.18);
+
+  /* A surface tone one step lighter than --color-surface, for elements
+     that should read as "raised" (FAB, dialogs). Identical to
+     --color-surface in light mode; genuinely lighter in dark mode, per
+     Material's dark-theme elevation-via-tint convention (shadows alone
+     don't read well on dark backgrounds). */
+  --color-surface-raised: #ffffff;
+
+  /* Motion — consistent easing/duration so every transition/animation in
+     the app feels like one system instead of ad hoc per-component values. */
+  --motion-fast: 120ms;
+  --motion-standard: 200ms;
+  --motion-slow: 320ms;
+  --motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Accessibility: focus ring color for :focus-visible (see base.css). */
+  --color-focus-ring: var(--color-primary);
+}
+
+/* Dark theme — applied via ui/shell/theme.js setting data-theme="dark" on
+   <html>, driven by settings.theme. Every screen already styles itself
+   purely with these variables (see styles/base.css), so no per-component
+   dark rules are needed — overriding the palette here is enough. */
+[data-theme="dark"] {
+  --color-bg: #14171a;
+  --color-surface: #1e2226;
+  --color-surface-raised: #262b30;
+  --color-primary: #34b27e;
+  --color-on-primary: #0c0f11;
+  --color-text: #e7eaec;
+  --color-text-muted: #9aa3ab;
+  --color-border: #2c3136;
+  --color-danger: #f87171;
+  --color-danger-bg: #3a1f1f;
+
+  /* Shadows alone are nearly invisible on a dark background, so dark-mode
+     elevation leans on higher-opacity black plus the lighter
+     --color-surface-raised tone above, rather than shadow depth alone. */
+  --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --elevation-2: 0 2px 4px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(0, 0, 0, 0.35);
+  --elevation-3: 0 4px 8px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.4);
+  --elevation-4: 0 6px 14px rgba(0, 0, 0, 0.55), 0 14px 28px rgba(0, 0, 0, 0.45);
+}

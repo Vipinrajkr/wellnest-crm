@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash screen drawable — referenced by both the launch theme
+     (values/styles.xml's AppTheme.NoActionBarLaunch, for Android <12) and
+     capacitor.config.json's SplashScreen.androidSplashResourceName (which
+     also covers Android 12+'s native splash API). Self-contained (brand
+     green fill + centered white "W", same mark as the launcher icon) since
+     this single drawable is shown directly, not composited like the
+     adaptive icon's separate background/foreground layers. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#2f9e6e"
+        android:pathData="M0,0h108v108h-108z" />
+    <path
+        android:pathData="M26,30 L37,78 L54,42 L71,78 L82,30"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="9"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000" />
+</vector>
