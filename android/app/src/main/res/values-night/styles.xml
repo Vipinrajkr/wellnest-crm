@@ -3,9 +3,9 @@
 
     <!-- When the OS is in dark mode, the native window background (visible
          briefly during activity transitions, outside the WebView) matches
-         styles/tokens.css's [data-theme="dark"] --color-bg instead of the
+         styles/tokens.css's dark-theme color-bg variable instead of the
          light-theme default in values/styles.xml. The in-app theme itself
-         (Settings → Theme) is independent of this OS-level setting — see
+         (Settings, Theme) is independent of this OS-level setting, see
          ui/shell/theme.js. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/brand_primary</item>
