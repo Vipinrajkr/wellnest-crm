@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- When the OS is in dark mode, the native window background (visible
+         briefly during activity transitions, outside the WebView) matches
+         styles/tokens.css's [data-theme="dark"] --color-bg instead of the
+         light-theme default in values/styles.xml. The in-app theme itself
+         (Settings → Theme) is independent of this OS-level setting — see
+         ui/shell/theme.js. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryDark">@color/brand_primary</item>
+        <item name="android:windowBackground">#14171a</item>
+    </style>
+
+</resources>
