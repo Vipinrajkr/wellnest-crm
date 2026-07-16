@@ -23,23 +23,38 @@ allprojects {
 // (and any Capacitor plugin modules pulled in via capacitor.settings.gradle).
 apply from: 'variables.gradle'
 
-// Force a consistent JVM target (17, matching compileOptions in
-// app/build.gradle) across every module, including ones we don't author
-// ourselves — @capacitor/background-runner's own build.gradle (pulled in
-// from node_modules via capacitor.settings.gradle) compiles a Kotlin
-// source set, and on some CI JDK images its Java and Kotlin compile tasks
-// disagree on target bytecode version ("Inconsistent JVM-target
-// compatibility detected for tasks 'compileDebugJavaWithJavac' (21) and
-// 'compileDebugKotlin' (17)"). Pinning both explicitly here avoids relying
-// on whatever JDK happens to be first on PATH for each module.
-subprojects {
-    tasks.withType(JavaCompile).configureEach {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
-    tasks.matching { it.name.contains("Kotlin") }.configureEach { task ->
-        if (task.hasProperty("kotlinOptions")) {
-            task.kotlinOptions.jvmTarget = "17"
+// Force a consistent JVM target (17) across every module, including ones
+// we don't author ourselves. @capacitor/background-runner's own
+// build.gradle (pulled in from node_modules via capacitor.settings.gradle)
+// hardcodes `compileOptions { sourceCompatibility/targetCompatibility
+// JavaVersion.VERSION_21 }`, while its Kotlin compile task defaults to 17
+// — the two disagree ("Inconsistent JVM-target compatibility detected for
+// tasks 'compileDebugJavaWithJavac' (21) and 'compileDebugKotlin' (17)").
+//
+// A plain `subprojects { tasks.withType(JavaCompile).configureEach {...} }`
+// isn't enough to win here: Gradle fires per-project `afterEvaluate` hooks
+// in registration order, and the Android/Kotlin plugins register their own
+// `afterEvaluate` config (which is where `android.compileOptions` actually
+// gets applied to the task) as part of `apply plugin: ...` inside each
+// subproject's own build.gradle — which runs *after* this root build.gradle
+// has already registered the subprojects{} closure. So AGP's 21 would
+// clobber our 17 regardless of what we set here directly.
+//
+// `gradle.projectsEvaluated` sidesteps that ordering race entirely: it
+// doesn't fire until every project's own configuration (including all of
+// their internal afterEvaluate hooks) has already run, so setting the
+// task properties here is guaranteed to be the last write and therefore
+// the one that sticks.
+gradle.projectsEvaluated {
+    subprojects.each { proj ->
+        proj.tasks.withType(JavaCompile).configureEach {
+            sourceCompatibility = "17"
+            targetCompatibility = "17"
+        }
+        proj.tasks.matching { it.name.contains("Kotlin") }.configureEach { task ->
+            if (task.hasProperty("kotlinOptions")) {
+                task.kotlinOptions.jvmTarget = "17"
+            }
         }
     }
 }
