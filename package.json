@@ -1,0 +1,23 @@
+{
+  "name": "wellnest-crm",
+  "version": "1.0.0",
+  "description": "Wellnest Nutrition CRM — offline-first Android app (Capacitor + vanilla HTML/CSS/JS + IndexedDB).",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync android",
+    "open:android": "cap open android",
+    "build:debug": "cd android && gradlew.bat assembleDebug",
+    "build:release": "cd android && gradlew.bat assembleRelease",
+    "bundle:release": "cd android && gradlew.bat bundleRelease"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/local-notifications": "^6.1.0",
+    "@capacitor/splash-screen": "^6.0.3",
+    "@capacitor/background-runner": "^2.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "appId": "com.wellnest.crm",
+  "appName": "Wellnest",
+  "webDir": "src",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": false,
+    "minWebViewVersion": 60
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "launchAutoHide": true,
+      "backgroundColor": "#2f9e6e",
+      "androidSplashResourceName": "splash_icon",
+      "androidScaleType": "CENTER",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_notify",
+      "iconColor": "#2f9e6e"
+    },
+    "BackgroundRunner": {
+      "label": "com.wellnest.crm.backuprunner",
+      "src": "platform/backgroundTask.js",
+      "event": "checkBackupDue",
+      "repeat": true,
+      "interval": 15,
+      "autoStart": true
+    }
+  }
+}
